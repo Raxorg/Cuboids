@@ -1,10 +1,13 @@
-package com.epicness.cuboids.game.logic;
+package com.epicness.cuboids.game.logic.player;
+
+import static com.epicness.cuboids.game.GameConstants.PLAYER_SPEED;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.epicness.cuboids.game.logic.GameLogicHandler;
 import com.epicness.cuboids.game.stuff.bidimensional.Player;
 
-public class PlayerHandler extends GameLogicHandler {
+public class PlayerMover extends GameLogicHandler {
 
     private Player player;
 
@@ -17,8 +20,10 @@ public class PlayerHandler extends GameLogicHandler {
     protected void update(float delta) {
         pollInput();
 
-        player.speed.scl(500f * delta);
+        player.speed.scl(PLAYER_SPEED * delta);
         player.translate(player.speed);
+
+        get(PlayerTracker.class).track();
     }
 
     private void pollInput() {
