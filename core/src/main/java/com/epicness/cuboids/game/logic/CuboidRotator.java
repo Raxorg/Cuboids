@@ -1,12 +1,13 @@
 package com.epicness.cuboids.game.logic;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.SnapshotArray;
-import com.epicness.cuboids.game.stuff.tridimensional.Cuboid;
+import com.epicness.cuboids.game.stuff.tridimensional.PlayCube;
 
 public class CuboidRotator extends GameLogicHandler {
 
-    private SnapshotArray<Cuboid> cuboids;
+    private SnapshotArray<PlayCube> cuboids;
     private float progress;
 
     @Override
@@ -21,11 +22,14 @@ public class CuboidRotator extends GameLogicHandler {
 
         progress += delta * 2f;
         for (int i = 0; i < cuboids.size; i++) {
-            cuboids.get(i).rotate(delta * 90f * 2f);
+            cuboids.get(i).setYRotation(MathUtils.lerp(0f, 90f, progress));
         }
 
         if (progress >= 1f) {
             progress = 1f;
+            for (int i = 0; i < cuboids.size; i++) {
+                cuboids.get(i).setYRotation(90f);
+            }
         }
     }
 

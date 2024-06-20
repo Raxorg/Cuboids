@@ -9,7 +9,7 @@ import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 
 public class World3D {
 
-    private final SnapshotArray<Cuboid> cuboids;
+    private final SnapshotArray<PlayCube> cuboids;
     private final World2D world2D;
 
     public World3D(World2D world2D) {
@@ -30,7 +30,7 @@ public class World3D {
         }
     }
 
-    public SnapshotArray<Cuboid> getCuboids() {
+    public SnapshotArray<PlayCube> getCuboids() {
         return cuboids;
     }
 }

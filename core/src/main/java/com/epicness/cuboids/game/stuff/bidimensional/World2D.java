@@ -14,18 +14,24 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 public class World2D implements Drawable2D {
 
     private final Rectangle rectangle;
+    private final Player player;
 
     public World2D(SharedAssets sharedAssets) {
-        rectangle = new Rectangle(0f, 0f, CAMERA_HEIGHT, CAMERA_HEIGHT, 25f, WHITE, CLEAR);
-
+        rectangle = new Rectangle(0f, 0f, CAMERA_WIDTH, CAMERA_HEIGHT, 25f, WHITE, CLEAR);
+        player = new Player();
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         rectangle.draw(shapeDrawer);
+        player.draw(shapeDrawer);
     }
 
     public Rectangle getRectangle() {
         return rectangle;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

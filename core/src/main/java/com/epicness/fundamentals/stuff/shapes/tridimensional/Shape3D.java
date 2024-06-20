@@ -33,12 +33,13 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         Model model = modelCreator.build(properties);
         modelInstance = new ModelInstance(model);
         Mesh mesh = model.meshes.first();
+        int vertexSections = modelCreator.vertexSections;
 
         float[] verticesWithUV = new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
         mesh.getVertices(verticesWithUV);
-        rotationVertices = new Vector3[verticesWithUV.length / 5];
+        rotationVertices = new Vector3[verticesWithUV.length / vertexSections];
         plainVertices = new float[rotationVertices.length * 3];
-        for (index = 0, extraIndex = 0; index < verticesWithUV.length; index += 5, extraIndex++) {
+        for (index = 0, extraIndex = 0; index < verticesWithUV.length; index += vertexSections, extraIndex++) {
             rotationVertices[extraIndex] = new Vector3(
                 verticesWithUV[index],
                 verticesWithUV[index + 1],
@@ -124,8 +125,16 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         translate(0f, 0f, amount);
     }
 
+    public float getXRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.X);
+    }
+
     public float getYRotation() {
         return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Y);
+    }
+
+    public float getZRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Z);
     }
 
     public final void rotate(float xDegrees, float yDegrees, float zDegrees) {
@@ -153,6 +162,18 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
 
     public final void rotateZ(float degrees) {
         rotate(0f, 0f, degrees);
+    }
+
+    public final void setXRotation(float degrees) {
+        rotateX(degrees - getXRotation());
+    }
+
+    public final void setYRotation(float degrees) {
+        rotateY(degrees - getYRotation());
+    }
+
+    public final void setZRotation(float degrees) {
+        rotateZ(degrees - getZRotation());
     }
 
     public final void setColor(Color color) {

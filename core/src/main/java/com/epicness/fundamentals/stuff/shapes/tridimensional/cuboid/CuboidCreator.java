@@ -1,16 +1,16 @@
-package com.epicness.fundamentals.stuff.shapes.tridimensional.cube;
+package com.epicness.fundamentals.stuff.shapes.tridimensional.cuboid;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelCreator;
 
-public class CubeCreator extends ModelCreator<CubeProperties> {
+public class CuboidCreator extends ModelCreator<CuboidProperties> {
 
-    protected CubeCreator(float width, float height, float depth) {
-        super(new CubeProperties(width, height, depth));
+    protected CuboidCreator(float width, float height, float depth) {
+        super(new CuboidProperties(width, height, depth), 6);
     }
 
     @Override
-    protected Model build(CubeProperties properties) {
+    protected Model build(CuboidProperties properties) {
         return modelBuilder.createBox(
             properties.width,
             properties.height,

@@ -1,16 +1,15 @@
 package com.epicness.cuboids.game.logic;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.cuboids.game.stuff.bidimensional.World2D;
-import com.epicness.cuboids.game.stuff.tridimensional.Cuboid;
+import com.epicness.cuboids.game.stuff.tridimensional.PlayCube;
 
 public class CuboidGenerator extends GameLogicHandler {
 
-    private SnapshotArray<Cuboid> cuboids;
+    private SnapshotArray<PlayCube> cuboids;
     private World2D world2D;
 
     @Override
@@ -21,7 +20,8 @@ public class CuboidGenerator extends GameLogicHandler {
     }
 
     public void generateCuboid() {
-        Cuboid cuboid = new Cuboid(0, 0, CAMERA_HEIGHT, CAMERA_HEIGHT, world2D);
-        cuboids.add(cuboid);
+        PlayCube playCube = new PlayCube(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT, world2D);
+        playCube.setZRotation(90f);
+        cuboids.add(playCube);
     }
 }

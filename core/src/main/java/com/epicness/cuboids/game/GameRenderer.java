@@ -2,8 +2,6 @@ package com.epicness.cuboids.game;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.epicness.cuboids.game.stuff.GameStuff;
 import com.epicness.fundamentals.renderer.Renderer3D;
 
@@ -23,7 +21,7 @@ public class GameRenderer extends Renderer3D<GameStuff> {
 
         useStaticCamera();
         spriteBatch.begin();
-        stuff.getWorld2D().getRectangle().draw(shapeDrawer);
+        // 2D UI
         spriteBatch.end();
     }
 }

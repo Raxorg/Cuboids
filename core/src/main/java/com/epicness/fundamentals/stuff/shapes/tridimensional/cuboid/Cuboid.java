@@ -1,11 +1,11 @@
-package com.epicness.fundamentals.stuff.shapes.tridimensional.cube;
+package com.epicness.fundamentals.stuff.shapes.tridimensional.cuboid;
 
 import com.epicness.fundamentals.stuff.shapes.tridimensional.Shape3D;
 
-public class Cube extends Shape3D<CubeCreator, CubeProperties> {
+public class Cuboid extends Shape3D<CuboidCreator, CuboidProperties> {
 
-    public Cube(float width, float height, float depth) {
-        super(new CubeCreator(width, height, depth));
+    public Cuboid(float width, float height, float depth) {
+        super(new CuboidCreator(width, height, depth));
     }
 
     @Override
