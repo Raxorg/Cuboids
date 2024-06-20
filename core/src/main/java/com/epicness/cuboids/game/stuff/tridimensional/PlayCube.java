@@ -26,9 +26,8 @@ public class PlayCube {
         planes[0].getShape().translateZ(CUBE_SIZE / 2f);
         // Back
         planes[1] = new Screen3D<>(new Plane(CUBE_SIZE, CUBE_SIZE), CAMERA_WIDTH * 2f, 0f, CAMERA_WIDTH, CAMERA_HEIGHT, world2D);
-        planes[1].getShape().rotateY(180f);
-        planes[1].getShape().rotateZ(180f);
-        planes[1].getShape().translateZ(CUBE_SIZE / 2f);
+        planes[1].getShape().translateZ(-CUBE_SIZE / 2f);
+        planes[1].setFlipX(true);
         // Bottom
         planes[2] = new Screen3D<>(new Plane(CUBE_SIZE, CUBE_SIZE), 0f, -CAMERA_HEIGHT, CAMERA_WIDTH, CAMERA_HEIGHT, world2D);
         planes[2].getShape().rotateX(90f);
@@ -67,7 +66,7 @@ public class PlayCube {
 
         planes[1].getShape().setPosition(Vector3.Zero);
         planes[1].getShape().rotateX(degrees);
-        planes[1].getShape().setPosition(0f, 0f, CUBE_SIZE / 2f);
+        planes[1].getShape().setPosition(0f, 0f, -CUBE_SIZE / 2f);
 
         planes[2].getShape().setPosition(Vector3.Zero);
         planes[2].getShape().rotateX(degrees);

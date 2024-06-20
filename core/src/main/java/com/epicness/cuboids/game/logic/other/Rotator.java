@@ -1,14 +1,15 @@
-package com.epicness.cuboids.game.logic;
+package com.epicness.cuboids.game.logic.other;
 
-import static com.badlogic.gdx.Input.Keys.F;
-
+import com.epicness.cuboids.game.logic.GameLogicHandler;
 import com.epicness.cuboids.game.stuff.tridimensional.PlayCube;
+import com.epicness.fundamentals.logic.CompletionListener;
 
 public class Rotator extends GameLogicHandler {
 
     private PlayCube playCube;
     private float xRotation;
     private boolean rotating;
+    private CompletionListener listener;
 
     @Override
     protected void init() {
@@ -29,13 +30,14 @@ public class Rotator extends GameLogicHandler {
             playCube.rotateXWise(90f - xRotation);
             xRotation = 0f;
             rotating = false;
+            listener.onComplete();
         }
     }
 
-    @Override
-    public void keyDown(int keycode) {
-        if (keycode == F) {
-            rotating = true;
-        }
+    public void rotateDown(CompletionListener listener) {
+        if (rotating) return;
+
+        rotating = true;
+        this.listener = listener;
     }
 }

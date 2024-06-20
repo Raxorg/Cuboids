@@ -10,38 +10,45 @@ import com.epicness.cuboids.game.stuff.bidimensional.Player;
 public class PlayerMover extends GameLogicHandler {
 
     private Player player;
+    private boolean enabled;
 
     @Override
     protected void init() {
         player = stuff.getWorld2D().getPlayer();
+        enabled = true;
     }
 
     @Override
     protected void update(float delta) {
+        if (!enabled) return;
         pollInput();
 
         player.speed.scl(PLAYER_SPEED * delta);
         player.translate(player.speed);
 
-        get(PlayerTracker.class).track();
+        get(PlayerTracker.class).trackPlayer();
     }
 
     private void pollInput() {
         player.speed.setZero();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
             player.speed.x -= 1f;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
             player.speed.x += 1f;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
             player.speed.y += 1f;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
             player.speed.y -= 1f;
         }
 
         player.speed.nor();
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

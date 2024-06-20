@@ -12,7 +12,7 @@ public class GameStuff extends Stuff<GameAssets> {
 
     @Override
     public void initializeStuff() {
-        world2D = new World2D(sharedAssets);
+        world2D = new World2D();
         world3D = new World3D(world2D);
     }
 
