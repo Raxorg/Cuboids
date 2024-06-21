@@ -6,11 +6,11 @@ import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class CirclePlus extends Fadeable implements Movable, ShapeDrawable {
+public class Base extends Fadeable implements Movable, ShapeDrawable {
 
     private final Circle circle;
 
-    public CirclePlus(float x, float y, float radius, Color borderColor, Color fillColor) {
+    public Base(float x, float y, float radius, Color borderColor, Color fillColor) {
         circle = new Circle(x, y, radius, borderColor, fillColor);
         originalColor.set(borderColor);
     }

@@ -4,13 +4,13 @@ import static com.epicness.cuboids.game.GameConstants.PLAYER_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.epicness.cuboids.game.logic.GameLogicHandler;
-import com.epicness.cuboids.game.stuff.bidimensional.LinePlus;
+import com.epicness.cuboids.game.stuff.bidimensional.Border;
 import com.epicness.cuboids.game.stuff.bidimensional.Player;
 
 public class BoundsHandler extends GameLogicHandler {
 
     private Player player;
-    private LinePlus[] lines;
+    private Border[] lines;
 
     @Override
     protected void init() {
@@ -29,7 +29,7 @@ public class BoundsHandler extends GameLogicHandler {
         }
         // Right
         if (player.getX() + PLAYER_SIZE > CAMERA_WIDTH * 2f) {
-            player.setX(CAMERA_WIDTH * 2f - PLAYER_SIZE);
+            player.setX(CAMERA_WIDTH * 2f - PLAYER_SIZE-1f);
         }
         // Left
         if (player.getX() < -CAMERA_WIDTH) {

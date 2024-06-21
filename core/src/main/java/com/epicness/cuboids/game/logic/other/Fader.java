@@ -22,9 +22,10 @@ public class Fader extends GameLogicHandler {
     protected void init() {
         fadeables = new Array<>();
         fadeables.add(stuff.getWorld2D().getPlayer());
-        fadeables.addAll(stuff.getWorld2D().getTests());
+        fadeables.addAll(stuff.getWorld2D().getEnemySpawners());
         fadeables.addAll(stuff.getWorld2D().getLines());
         fadeables.add(stuff.getWorld2D().getBase());
+
         progress = 1f;
         aux = new Color();
     }

@@ -13,7 +13,7 @@ public class StuffMover extends GameLogicHandler {
     @Override
     protected void init() {
         movables = new Array<>();
-        movables.addAll(stuff.getWorld2D().getTests());
+        movables.addAll(stuff.getWorld2D().getEnemySpawners());
         movables.addAll(stuff.getWorld2D().getLines());
         movables.add(stuff.getWorld2D().getBase());
     }
