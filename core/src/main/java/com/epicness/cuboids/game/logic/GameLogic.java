@@ -1,5 +1,6 @@
 package com.epicness.cuboids.game.logic;
 
+import com.epicness.cuboids.game.logic.enemies.EnemyMover;
 import com.epicness.cuboids.game.logic.enemies.EnemySpawner;
 import com.epicness.cuboids.game.logic.other.CameraHandler;
 import com.epicness.cuboids.game.logic.other.Fader;
@@ -13,6 +14,7 @@ import com.epicness.fundamentals.logic.Logic;
 public class GameLogic extends Logic {
 
     // Enemies
+    private final EnemyMover enemyMover;
     private final EnemySpawner enemySpawner;
     // Other
     private final CameraHandler cameraHandler;
@@ -23,6 +25,7 @@ public class GameLogic extends Logic {
 
     public GameLogic() {
         // Enemies
+        registerHandler(enemyMover = new EnemyMover());
         registerHandler(enemySpawner = new EnemySpawner());
         // Other
         registerHandler(cameraHandler = new CameraHandler());
@@ -38,6 +41,7 @@ public class GameLogic extends Logic {
     @Override
     public void update() {
         // Enemies
+        enemyMover.update();
         enemySpawner.update();
         // Other
         cameraHandler.update();

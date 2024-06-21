@@ -1,5 +1,6 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
+import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
@@ -8,8 +9,9 @@ public class Triangle implements ShapeDrawable, Movable {
 
     private float x1, y1, x2, y2, x3, y3;
     private float thickness;
+    private final Color color;
 
-    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3, float thickness) {
+    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3, float thickness, Color color) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -17,24 +19,25 @@ public class Triangle implements ShapeDrawable, Movable {
         this.x3 = x3;
         this.y3 = y3;
         this.thickness = thickness;
+        this.color = new Color(color);
     }
 
     public Triangle(float x1, float y1, float x2, float y2, float x3, float y3) {
-        this(x1, y1, x2, y2, x3, y3, 3f);
+        this(x1, y1, x2, y2, x3, y3, 3f, new Color(1f, 1f, 1f, 1f));
     }
 
-    public Triangle(float[] vertices) {
-        this(vertices[0], vertices[1], vertices[2], vertices[3], vertices[4], vertices[5]);
+    public Triangle(float[] vertices, Color color) {
+        this(vertices[0], vertices[1], vertices[2], vertices[3], vertices[4], vertices[5], 3f, color);
     }
 
     @Override
     public void draw(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.triangle(x1, y1, x2, y2, x3, y3, thickness);
+        shapeDrawer.triangle(x1, y1, x2, y2, x3, y3, thickness, color.toFloatBits());
     }
 
     @Override
     public float getX() {
-        return Math.min(Math.min(x1, x2), x3);
+        return x1;
     }
 
     public float getEndX() {
@@ -50,7 +53,7 @@ public class Triangle implements ShapeDrawable, Movable {
 
     @Override
     public float getY() {
-        return Math.min(Math.min(y1, y2), y3);
+        return y1;
     }
 
     public float getEndY() {
@@ -66,5 +69,9 @@ public class Triangle implements ShapeDrawable, Movable {
 
     public void setThickness(float thickness) {
         this.thickness = thickness;
+    }
+
+    public void setColor(Color color) {
+        this.color.set(color);
     }
 }

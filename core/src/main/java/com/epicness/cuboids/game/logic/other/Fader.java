@@ -7,12 +7,14 @@ import static com.badlogic.gdx.graphics.Color.CLEAR;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
+import com.epicness.cuboids.game.stuff.bidimensional.Enemy;
 import com.epicness.cuboids.game.stuff.bidimensional.Fadeable;
 import com.epicness.fundamentals.logic.CompletionListener;
 
 public class Fader extends GameLogicHandler {
 
     private Array<Fadeable> fadeables;
+    private Array<Enemy> enemies;
     private float progress;
     private boolean fadeIn;
     private Color aux;
@@ -26,6 +28,7 @@ public class Fader extends GameLogicHandler {
         fadeables.addAll(stuff.getWorld2D().getLines());
         fadeables.add(stuff.getWorld2D().getBase());
 
+        enemies = stuff.getWorld2D().getEnemies();
         progress = 1f;
         aux = new Color();
     }
@@ -35,17 +38,22 @@ public class Fader extends GameLogicHandler {
         if (progress == 1f) return;
 
         progress = Math.min(progress + delta * 5f, 1f);
-        Fadeable fadeable;
         for (int i = 0; i < fadeables.size; i++) {
-            fadeable = fadeables.get(i);
-            if (fadeIn) {
-                fadeable.setColor(aux.set(CLEAR).lerp(fadeable.originalColor, progress));
-            } else {
-                fadeable.setColor(aux.set(fadeable.originalColor).lerp(CLEAR, progress));
-            }
+            fade(fadeables.get(i));
+        }
+        for (int i = 0; i < enemies.size; i++) {
+            fade(enemies.get(i));
         }
 
         if (progress == 1f) listener.onComplete();
+    }
+
+    private void fade(Fadeable fadeable) {
+        if (fadeIn) {
+            fadeable.setColor(aux.set(CLEAR).lerp(fadeable.originalColor, progress));
+        } else {
+            fadeable.setColor(aux.set(fadeable.originalColor).lerp(CLEAR, progress));
+        }
     }
 
     @Override

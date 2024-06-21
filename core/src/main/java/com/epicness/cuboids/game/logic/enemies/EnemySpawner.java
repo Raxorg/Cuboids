@@ -2,7 +2,7 @@ package com.epicness.cuboids.game.logic.enemies;
 
 import static com.epicness.cuboids.game.GameConstants.ENEMY_SPAWN_RATE;
 
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
 import com.epicness.cuboids.game.stuff.bidimensional.Enemy;
 import com.epicness.cuboids.game.stuff.bidimensional.EnemySpawn;
@@ -11,7 +11,7 @@ import com.epicness.fundamentals.utils.Random;
 public class EnemySpawner extends GameLogicHandler {
 
     private EnemySpawn[] enemySpawns;
-    private Array<Enemy> enemies;
+    private SnapshotArray<Enemy> enemies;
     private float timer;
 
     @Override
@@ -31,7 +31,7 @@ public class EnemySpawner extends GameLogicHandler {
 
     private void spawnEnemy() {
         EnemySpawn randomSpawner = Random.fromArray(enemySpawns);
-        Enemy enemy = new Enemy(randomSpawner.getEnemyVerts(), randomSpawner.enemyDirection);
+        Enemy enemy = new Enemy(randomSpawner.getEnemyVerts(), randomSpawner.enemyDirection, randomSpawner.originalColor);
         enemy.setPosition(randomSpawner.getPosition());
         enemies.add(enemy);
     }
