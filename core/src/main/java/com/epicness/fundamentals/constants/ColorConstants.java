@@ -28,10 +28,13 @@ public class ColorConstants {
     // Pastels
     public static final Color PASTEL_RED = new Color(0xFFA599FF);
     public static final Color PASTEL_GREEN = new Color(0xBDFFBFFF);
-    public static final Color PASTEL_BLUE = new Color(0x94DBFFFF);
+    public static final Color PASTEL_BLUE = new Color(0x99DBFFFF);
     public static final Color PASTEL_YELLOW = new Color(0xFFFF99FF);
     public static final Color PASTEL_ORANGE = new Color(0xFFD0A1FF);
     public static final Color PASTEL_PURPLE = new Color(0xB1A3FFFF);
+    public static final Color PASTEL_CYAN = new Color(0x99FFFFFF);
+    public static final Color PASTEL_OLIVE = new Color(0xD9FF99FF);
+    public static final Color PASTEL_PINK = new Color(0xFFC9FFFF);
 
     // Terminal
     public static final String ANSI_RESET = "\u001B[0m";

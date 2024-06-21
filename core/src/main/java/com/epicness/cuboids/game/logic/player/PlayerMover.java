@@ -26,6 +26,7 @@ public class PlayerMover extends GameLogicHandler {
         player.speed.scl(PLAYER_SPEED * delta);
         player.translate(player.speed);
 
+        get(BoundsHandler.class).checkBounds();
         get(PlayerTracker.class).trackPlayer();
     }
 
