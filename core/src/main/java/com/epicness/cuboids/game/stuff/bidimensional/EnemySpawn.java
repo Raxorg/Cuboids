@@ -1,5 +1,7 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
+import static com.badlogic.gdx.graphics.Color.CLEAR;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
@@ -13,7 +15,7 @@ public class EnemySpawn extends Fadeable implements Movable {
     public final Vector2 enemyDirection;
 
     public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Vector2 enemyDirection) {
-        rectangle = new Rectangle(x, y, size, size, color);
+        rectangle = new Rectangle(x, y, size, size, 10f, color, CLEAR);
         this.enemyVerts = enemyVerts;
         this.enemyDirection = enemyDirection;
         originalColor.set(color);
@@ -25,7 +27,7 @@ public class EnemySpawn extends Fadeable implements Movable {
 
     @Override
     public void setColor(Color color) {
-        rectangle.setColor(color);
+        rectangle.setBorderColor(color);
     }
 
     @Override
@@ -46,6 +48,10 @@ public class EnemySpawn extends Fadeable implements Movable {
     @Override
     public void translateY(float amount) {
         rectangle.y += amount;
+    }
+
+    public Vector2 getCenter(Vector2 result) {
+        return result.set(getX() + rectangle.width / 2f, getY() + rectangle.height / 2f);
     }
 
     public float[] getEnemyVerts() {
