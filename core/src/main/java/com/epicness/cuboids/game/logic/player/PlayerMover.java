@@ -15,7 +15,6 @@ public class PlayerMover extends GameLogicHandler {
     @Override
     protected void init() {
         player = stuff.getWorld2D().getPlayer();
-        enabled = true;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class PlayerMover extends GameLogicHandler {
 
         get(BoundsHandler.class).checkBounds();
         get(PlayerTracker.class).trackPlayer();
-        get(AttackHandler.class).checkProximity();
+        get(ComboHandler.class).checkProximity();
     }
 
     private void pollInput() {

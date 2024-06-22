@@ -1,6 +1,7 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
@@ -73,5 +74,11 @@ public class Triangle implements ShapeDrawable, Movable {
 
     public void setColor(Color color) {
         this.color.set(color);
+    }
+
+    public Vector2 getCenter(Vector2 result) {
+        float x = (x1 + x2 + x3) / 3f;
+        float y = (y1 + y2 + y3) / 3f;
+        return result.set(x, y);
     }
 }

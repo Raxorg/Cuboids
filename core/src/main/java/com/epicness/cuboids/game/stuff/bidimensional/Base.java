@@ -1,6 +1,7 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
@@ -43,5 +44,9 @@ public class Base extends Fadeable implements Movable, ShapeDrawable {
     @Override
     public void setColor(Color color) {
         circle.setBorderColor(color);
+    }
+
+    public Vector2 getCenter(Vector2 result) {
+        return circle.getCenter(result);
     }
 }

@@ -2,6 +2,7 @@ package com.epicness.cuboids.game.stuff.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.cuboids.game.constants.Direction;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
@@ -9,9 +10,9 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 public class Enemy extends Fadeable implements Movable {
 
     private final Triangle triangle;
-    public final Vector2 direction;
+    public final Direction direction;
 
-    public Enemy(float[] verts, Vector2 direction, Color color) {
+    public Enemy(float[] verts, Direction direction, Color color) {
         triangle = new Triangle(verts, color);
         this.direction = direction;
         originalColor.set(color);
@@ -44,5 +45,9 @@ public class Enemy extends Fadeable implements Movable {
     @Override
     public void setColor(Color color) {
         triangle.setColor(color);
+    }
+
+    public Vector2 getCenter(Vector2 result) {
+        return triangle.getCenter(result);
     }
 }

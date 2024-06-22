@@ -11,23 +11,23 @@ import static com.badlogic.gdx.graphics.Color.PURPLE;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
-import static com.epicness.cuboids.game.GameConstants.BOTTOM;
-import static com.epicness.cuboids.game.GameConstants.BOTTOM_LEFT;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_LEFT_VERTS;
-import static com.epicness.cuboids.game.GameConstants.BOTTOM_RIGHT;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_RIGHT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_VERTS;
 import static com.epicness.cuboids.game.GameConstants.CYAN_COMBO;
-import static com.epicness.cuboids.game.GameConstants.LEFT;
 import static com.epicness.cuboids.game.GameConstants.LEFT_VERTS;
-import static com.epicness.cuboids.game.GameConstants.RIGHT;
 import static com.epicness.cuboids.game.GameConstants.RIGHT_VERTS;
-import static com.epicness.cuboids.game.GameConstants.TOP;
-import static com.epicness.cuboids.game.GameConstants.TOP_LEFT;
 import static com.epicness.cuboids.game.GameConstants.TOP_LEFT_VERTS;
-import static com.epicness.cuboids.game.GameConstants.TOP_RIGHT;
 import static com.epicness.cuboids.game.GameConstants.TOP_RIGHT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.TOP_VERTS;
+import static com.epicness.cuboids.game.constants.Direction.DOWN;
+import static com.epicness.cuboids.game.constants.Direction.DOWN_LEFT;
+import static com.epicness.cuboids.game.constants.Direction.DOWN_RIGHT;
+import static com.epicness.cuboids.game.constants.Direction.LEFT;
+import static com.epicness.cuboids.game.constants.Direction.RIGHT;
+import static com.epicness.cuboids.game.constants.Direction.UP;
+import static com.epicness.cuboids.game.constants.Direction.UP_LEFT;
+import static com.epicness.cuboids.game.constants.Direction.UP_RIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
@@ -81,14 +81,14 @@ public class World2D implements Drawable2D {
     }
 
     private void initSpawners() {
-        spawns.add(new EnemySpawn(1450f, -550f, 100f, CYAN, TOP_LEFT_VERTS, TOP_LEFT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(1450f, -550f, 100f, CYAN, TOP_LEFT_VERTS, UP_LEFT, CYAN_COMBO));
         spawns.add(new EnemySpawn(-550, 450f, 100f, RED, RIGHT_VERTS, RIGHT, CYAN_COMBO));
         spawns.add(new EnemySpawn(1450f, 450f, 100f, GREEN, LEFT_VERTS, LEFT, CYAN_COMBO));
-        spawns.add(new EnemySpawn(1450f, 1450f, 100f, YELLOW, BOTTOM_LEFT_VERTS, BOTTOM_LEFT, CYAN_COMBO));
-        spawns.add(new EnemySpawn(450f, -550f, 100f, ORANGE, TOP_VERTS, TOP, CYAN_COMBO));
-        spawns.add(new EnemySpawn(450f, 1450f, 100f, PURPLE, BOTTOM_VERTS, BOTTOM, CYAN_COMBO));
-        spawns.add(new EnemySpawn(-550f, 1450f, 100f, OLIVE, BOTTOM_RIGHT_VERTS, BOTTOM_RIGHT, CYAN_COMBO));
-        spawns.add(new EnemySpawn(-550f, -550f, 100f, PINK, TOP_RIGHT_VERTS, TOP_RIGHT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(1450f, 1450f, 100f, YELLOW, BOTTOM_LEFT_VERTS, DOWN_LEFT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(450f, -550f, 100f, ORANGE, TOP_VERTS, UP, CYAN_COMBO));
+        spawns.add(new EnemySpawn(450f, 1450f, 100f, PURPLE, BOTTOM_VERTS, DOWN, CYAN_COMBO));
+        spawns.add(new EnemySpawn(-550f, 1450f, 100f, OLIVE, BOTTOM_RIGHT_VERTS, DOWN_RIGHT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(-550f, -550f, 100f, PINK, TOP_RIGHT_VERTS, UP_RIGHT, CYAN_COMBO));
     }
 
     @Override

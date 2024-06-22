@@ -56,6 +56,8 @@ public class WaveHandler extends GameLogicHandler {
     }
 
     public void beginWave(Wave wave) {
+        if (spawning) return;
+
         currentWave = wave;
         currentIndex = 0;
         spawning = true;

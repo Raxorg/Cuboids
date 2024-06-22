@@ -13,10 +13,10 @@ public class EnemySpawn extends Fadeable implements Movable {
 
     private final Rectangle rectangle;
     public final float[] enemyVerts;
-    public final Vector2 enemyDirection;
+    public final Direction enemyDirection;
     public final Direction[] combo;
 
-    public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Vector2 enemyDirection, Direction[] combo) {
+    public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Direction enemyDirection, Direction[] combo) {
         rectangle = new Rectangle(x, y, size, size, 10f, color, CLEAR);
         this.enemyVerts = enemyVerts;
         this.enemyDirection = enemyDirection;
