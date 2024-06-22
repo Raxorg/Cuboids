@@ -1,6 +1,10 @@
 package com.epicness.cuboids.game;
 
+import static com.epicness.cuboids.game.constants.Direction.DOWN;
+import static com.epicness.cuboids.game.constants.Direction.UP;
+
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.cuboids.game.constants.Direction;
 
 public class GameConstants {
 
@@ -11,8 +15,6 @@ public class GameConstants {
     public static final float PLAYER_RADIUS = PLAYER_SIZE / 2f;
 
     public static final float BASE_RADIUS = 40f;
-
-    public static final float ENEMY_SPAWN_RATE = 0.5f;
 
     public static final float[] TOP_LEFT_VERTS = {0f, 50f, 50f, 50f, 0f, 0f};
     public static final float[] TOP_RIGHT_VERTS = {50f, 50f, 50f, 0f, 0f, 50f};
@@ -31,4 +33,6 @@ public class GameConstants {
     public static final Vector2 BOTTOM = new Vector2(0f, -1f);
     public static final Vector2 LEFT = new Vector2(-1f, 0f);
     public static final Vector2 RIGHT = new Vector2(1f, 0f);
+
+    public static final Direction[] CYAN_COMBO = {UP, UP, DOWN};
 }

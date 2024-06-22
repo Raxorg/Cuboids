@@ -48,4 +48,8 @@ public class Player extends Fadeable implements Movable {
     public void setColor(Color color) {
         circle.setColor(color);
     }
+
+    public Vector2 getCenter(Vector2 result) {
+        return circle.getCenter(result);
+    }
 }

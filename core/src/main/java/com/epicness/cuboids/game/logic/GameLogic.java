@@ -2,11 +2,14 @@ package com.epicness.cuboids.game.logic;
 
 import com.epicness.cuboids.game.logic.enemies.EnemyMover;
 import com.epicness.cuboids.game.logic.enemies.EnemySpawner;
+import com.epicness.cuboids.game.logic.enemies.WaveHandler;
 import com.epicness.cuboids.game.logic.other.CameraHandler;
 import com.epicness.cuboids.game.logic.other.Fader;
 import com.epicness.cuboids.game.logic.other.Rotator;
 import com.epicness.cuboids.game.logic.other.StuffMover;
+import com.epicness.cuboids.game.logic.player.AttackHandler;
 import com.epicness.cuboids.game.logic.player.BoundsHandler;
+import com.epicness.cuboids.game.logic.player.PlayerEnabler;
 import com.epicness.cuboids.game.logic.player.PlayerMover;
 import com.epicness.cuboids.game.logic.player.PlayerTracker;
 import com.epicness.fundamentals.logic.Logic;
@@ -15,7 +18,7 @@ public class GameLogic extends Logic {
 
     // Enemies
     private final EnemyMover enemyMover;
-    private final EnemySpawner enemySpawner;
+    private final WaveHandler waveHandler;
     // Other
     private final CameraHandler cameraHandler;
     private final Fader fader;
@@ -26,14 +29,17 @@ public class GameLogic extends Logic {
     public GameLogic() {
         // Enemies
         registerHandler(enemyMover = new EnemyMover());
-        registerHandler(enemySpawner = new EnemySpawner());
+        registerHandler(waveHandler = new WaveHandler());
+        registerHandler(new EnemySpawner());
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(fader = new Fader());
         registerHandler(rotator = new Rotator());
         registerHandler(new StuffMover());
         // Player
+        registerHandler(new AttackHandler());
         registerHandler(new BoundsHandler());
+        registerHandler(new PlayerEnabler());
         registerHandler(playerMover = new PlayerMover());
         registerHandler(new PlayerTracker());
     }
@@ -42,7 +48,7 @@ public class GameLogic extends Logic {
     public void update() {
         // Enemies
         enemyMover.update();
-        enemySpawner.update();
+        waveHandler.update();
         // Other
         cameraHandler.update();
         fader.update();

@@ -28,6 +28,7 @@ public class PlayerMover extends GameLogicHandler {
 
         get(BoundsHandler.class).checkBounds();
         get(PlayerTracker.class).trackPlayer();
+        get(AttackHandler.class).checkProximity();
     }
 
     private void pollInput() {

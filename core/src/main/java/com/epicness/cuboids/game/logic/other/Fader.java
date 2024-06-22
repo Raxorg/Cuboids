@@ -1,7 +1,5 @@
 package com.epicness.cuboids.game.logic.other;
 
-import static com.badlogic.gdx.Input.Keys.O;
-import static com.badlogic.gdx.Input.Keys.P;
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 
 import com.badlogic.gdx.graphics.Color;
@@ -24,7 +22,7 @@ public class Fader extends GameLogicHandler {
     protected void init() {
         fadeables = new Array<>();
         fadeables.add(stuff.getWorld2D().getPlayer());
-        fadeables.addAll(stuff.getWorld2D().getEnemySpawners());
+        fadeables.addAll(stuff.getWorld2D().getSpawns());
         fadeables.addAll(stuff.getWorld2D().getLines());
         fadeables.add(stuff.getWorld2D().getBase());
 
@@ -54,14 +52,6 @@ public class Fader extends GameLogicHandler {
         } else {
             fadeable.setColor(aux.set(fadeable.originalColor).lerp(CLEAR, progress));
         }
-    }
-
-    @Override
-    public void keyDown(int keycode) {
-        if (keycode == P) fadeOut(() -> {
-        });
-        if (keycode == O) fadeIn(() -> {
-        });
     }
 
     public void fadeOut(CompletionListener listener) {

@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.CLEAR;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.cuboids.game.constants.Direction;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
@@ -11,13 +12,15 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 public class EnemySpawn extends Fadeable implements Movable {
 
     private final Rectangle rectangle;
-    private final float[] enemyVerts;
+    public final float[] enemyVerts;
     public final Vector2 enemyDirection;
+    public final Direction[] combo;
 
-    public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Vector2 enemyDirection) {
+    public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Vector2 enemyDirection, Direction[] combo) {
         rectangle = new Rectangle(x, y, size, size, 10f, color, CLEAR);
         this.enemyVerts = enemyVerts;
         this.enemyDirection = enemyDirection;
+        this.combo = combo;
         originalColor.set(color);
     }
 
@@ -52,9 +55,5 @@ public class EnemySpawn extends Fadeable implements Movable {
 
     public Vector2 getCenter(Vector2 result) {
         return result.set(getX() + rectangle.width / 2f, getY() + rectangle.height / 2f);
-    }
-
-    public float[] getEnemyVerts() {
-        return enemyVerts;
     }
 }

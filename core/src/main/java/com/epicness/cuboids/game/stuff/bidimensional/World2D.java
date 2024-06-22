@@ -17,6 +17,7 @@ import static com.epicness.cuboids.game.GameConstants.BOTTOM_LEFT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_RIGHT;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_RIGHT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_VERTS;
+import static com.epicness.cuboids.game.GameConstants.CYAN_COMBO;
 import static com.epicness.cuboids.game.GameConstants.LEFT;
 import static com.epicness.cuboids.game.GameConstants.LEFT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.RIGHT;
@@ -37,14 +38,15 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Drawable2D;
 
 public class World2D implements Drawable2D {
 
-    private final EnemySpawn[] enemySpawns;
+    private final SnapshotArray<EnemySpawn> spawns;
     private final Base base;
     private final SnapshotArray<Enemy> enemies;
     private final Player player;
     private final Border[] lines;
 
     public World2D() {
-        enemySpawns = new EnemySpawn[8];
+
+        spawns = new SnapshotArray<>();
         initSpawners();
 
         base = new Base(500f - BASE_RADIUS, 500f - BASE_RADIUS, BASE_RADIUS, BLUE, CLEAR);
@@ -79,20 +81,20 @@ public class World2D implements Drawable2D {
     }
 
     private void initSpawners() {
-        enemySpawns[0] = new EnemySpawn(1450f, -550f, 100f, CYAN, TOP_LEFT_VERTS, TOP_LEFT);
-        enemySpawns[1] = new EnemySpawn(-550, 450f, 100f, RED, RIGHT_VERTS, RIGHT);
-        enemySpawns[2] = new EnemySpawn(1450f, 450f, 100f, GREEN, LEFT_VERTS, LEFT);
-        enemySpawns[3] = new EnemySpawn(1450f, 1450f, 100f, YELLOW, BOTTOM_LEFT_VERTS, BOTTOM_LEFT);
-        enemySpawns[4] = new EnemySpawn(450f, -550f, 100f, ORANGE, TOP_VERTS, TOP);
-        enemySpawns[5] = new EnemySpawn(450f, 1450f, 100f, PURPLE, BOTTOM_VERTS, BOTTOM);
-        enemySpawns[6] = new EnemySpawn(-550f, 1450f, 100f, OLIVE, BOTTOM_RIGHT_VERTS, BOTTOM_RIGHT);
-        enemySpawns[7] = new EnemySpawn(-550f, -550f, 100f, PINK, TOP_RIGHT_VERTS, TOP_RIGHT);
+        spawns.add(new EnemySpawn(1450f, -550f, 100f, CYAN, TOP_LEFT_VERTS, TOP_LEFT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(-550, 450f, 100f, RED, RIGHT_VERTS, RIGHT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(1450f, 450f, 100f, GREEN, LEFT_VERTS, LEFT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(1450f, 1450f, 100f, YELLOW, BOTTOM_LEFT_VERTS, BOTTOM_LEFT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(450f, -550f, 100f, ORANGE, TOP_VERTS, TOP, CYAN_COMBO));
+        spawns.add(new EnemySpawn(450f, 1450f, 100f, PURPLE, BOTTOM_VERTS, BOTTOM, CYAN_COMBO));
+        spawns.add(new EnemySpawn(-550f, 1450f, 100f, OLIVE, BOTTOM_RIGHT_VERTS, BOTTOM_RIGHT, CYAN_COMBO));
+        spawns.add(new EnemySpawn(-550f, -550f, 100f, PINK, TOP_RIGHT_VERTS, TOP_RIGHT, CYAN_COMBO));
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
-        for (int i = 0; i < enemySpawns.length; i++) {
-            enemySpawns[i].draw(shapeDrawer);
+        for (int i = 0; i < spawns.size; i++) {
+            spawns.get(i).draw(shapeDrawer);
         }
         base.draw(shapeDrawer);
         for (int i = 0; i < enemies.size; i++) {
@@ -104,8 +106,8 @@ public class World2D implements Drawable2D {
         }
     }
 
-    public EnemySpawn[] getEnemySpawners() {
-        return enemySpawns;
+    public SnapshotArray<EnemySpawn> getSpawns() {
+        return spawns;
     }
 
     public Base getBase() {
