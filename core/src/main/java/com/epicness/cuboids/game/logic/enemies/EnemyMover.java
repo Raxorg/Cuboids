@@ -21,7 +21,7 @@ public class EnemyMover extends GameLogicHandler {
         Enemy enemy;
         for (int i = 0; i < enemies.size; i++) {
             enemy = enemies.get(i);
-            aux.set(enemy.direction.vector).scl(100f * delta);
+            aux.set(enemy.direction.vector).scl(enemy.speed * delta);
             enemy.translate(aux);
         }
     }

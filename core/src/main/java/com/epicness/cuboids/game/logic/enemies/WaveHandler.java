@@ -9,12 +9,12 @@ import static com.epicness.cuboids.game.constants.Direction.RIGHT;
 import static com.epicness.cuboids.game.constants.Direction.UP;
 import static com.epicness.cuboids.game.constants.Direction.UP_LEFT;
 import static com.epicness.cuboids.game.constants.Direction.UP_RIGHT;
-import static com.epicness.cuboids.game.stuff.Wave.WAVE_1;
+import static com.epicness.cuboids.game.stuff.other.Wave.WAVE_1;
 
 import com.epicness.cuboids.game.constants.Direction;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
-import com.epicness.cuboids.game.stuff.Wave;
 import com.epicness.cuboids.game.stuff.bidimensional.EnemySpawn;
+import com.epicness.cuboids.game.stuff.other.Wave;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +48,10 @@ public class WaveHandler extends GameLogicHandler {
 
         time += delta;
         if (time >= currentWave.spawnRate) {
-            get(EnemySpawner.class).spawnEnemy(spawnMap.get(currentWave.get(currentIndex)));
+            EnemySpawn spawn = spawnMap.get(currentWave.get(currentIndex));
+            if (spawn != null) {
+                get(EnemySpawner.class).spawnEnemy(spawn, currentWave.speed);
+            }
             time -= currentWave.spawnRate;
             currentIndex++;
             if (currentIndex == currentWave.size) spawning = false;

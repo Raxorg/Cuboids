@@ -1,7 +1,5 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
-import static com.badlogic.gdx.graphics.Color.BLUE;
-import static com.badlogic.gdx.graphics.Color.CLEAR;
 import static com.badlogic.gdx.graphics.Color.CYAN;
 import static com.badlogic.gdx.graphics.Color.GREEN;
 import static com.badlogic.gdx.graphics.Color.OLIVE;
@@ -10,7 +8,6 @@ import static com.badlogic.gdx.graphics.Color.PINK;
 import static com.badlogic.gdx.graphics.Color.PURPLE;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_LEFT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_RIGHT_VERTS;
 import static com.epicness.cuboids.game.GameConstants.BOTTOM_VERTS;
@@ -49,7 +46,7 @@ public class World2D implements Drawable2D {
         spawns = new SnapshotArray<>();
         initSpawners();
 
-        base = new Base(500f - BASE_RADIUS, 500f - BASE_RADIUS, BASE_RADIUS, BLUE, CLEAR);
+        base = new Base();
         enemies = new SnapshotArray<>();
         player = new Player();
 

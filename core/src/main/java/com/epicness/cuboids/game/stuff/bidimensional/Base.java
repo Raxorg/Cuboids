@@ -1,5 +1,12 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
+import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.CLEAR;
+import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
+import static com.epicness.cuboids.game.GameConstants.BASE_THICKNESS;
+import static com.epicness.cuboids.game.GameConstants.BASE_X;
+import static com.epicness.cuboids.game.GameConstants.BASE_Y;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
@@ -11,9 +18,9 @@ public class Base extends Fadeable implements Movable, ShapeDrawable {
 
     private final Circle circle;
 
-    public Base(float x, float y, float radius, Color borderColor, Color fillColor) {
-        circle = new Circle(x, y, radius, borderColor, fillColor);
-        originalColor.set(borderColor);
+    public Base() {
+        circle = new Circle(BASE_X, BASE_Y, BASE_RADIUS, BLUE, CLEAR, BASE_THICKNESS);
+        originalColor.set(BLUE);
     }
 
     @Override

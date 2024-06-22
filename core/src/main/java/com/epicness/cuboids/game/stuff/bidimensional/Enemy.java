@@ -11,10 +11,12 @@ public class Enemy extends Fadeable implements Movable {
 
     private final Triangle triangle;
     public final Direction direction;
+    public final float speed;
 
-    public Enemy(float[] verts, Direction direction, Color color) {
+    public Enemy(float[] verts, Direction direction, float speed, Color color) {
         triangle = new Triangle(verts, color);
         this.direction = direction;
+        this.speed = speed;
         originalColor.set(color);
     }
 

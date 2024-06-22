@@ -18,8 +18,8 @@ public class EnemySpawner extends GameLogicHandler {
         aux = new Vector2();
     }
 
-    public void spawnEnemy(EnemySpawn spawn) {
-        Enemy enemy = new Enemy(spawn.enemyVerts, spawn.enemyDirection, spawn.originalColor);
+    public void spawnEnemy(EnemySpawn spawn, float speed) {
+        Enemy enemy = new Enemy(spawn.enemyVerts, spawn.enemyDirection, speed, spawn.originalColor);
         enemy.setPosition(spawn.getCenter(aux));
         enemies.add(enemy);
         get(SoundHandler.class).getSound(enemy).play();

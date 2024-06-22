@@ -4,6 +4,7 @@ import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
+import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;
@@ -35,8 +36,9 @@ public class NoteHandler extends GameLogicHandler {
         Direction enemyDirection = closestEnemy.direction;
         if (directionMatchesKey(enemyDirection, keycode)) {
             get(SoundHandler.class).getSound(closestEnemy).play();
-        } else {
-            System.out.println("FAIL");
+            enemies.begin();
+            enemies.removeValue(closestEnemy, true);
+            enemies.end();
         }
     }
 
@@ -46,7 +48,7 @@ public class NoteHandler extends GameLogicHandler {
         for (int i = 0; i < enemies.size; i++) {
             current = enemies.get(i);
             distance = base.getCenter(aux1).dst(current.getCenter(aux2));
-            if (distance < closestDistance && distance < 300f) {
+            if (distance < closestDistance && distance <= BASE_RADIUS) {
                 closest = current;
                 closestDistance = distance;
             }
