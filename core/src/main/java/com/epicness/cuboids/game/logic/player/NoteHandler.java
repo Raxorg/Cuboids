@@ -4,7 +4,7 @@ import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
-import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
+import static com.epicness.cuboids.game.GameConstants.NOTE_RADIUS;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;
@@ -48,7 +48,7 @@ public class NoteHandler extends GameLogicHandler {
         for (int i = 0; i < enemies.size; i++) {
             current = enemies.get(i);
             distance = base.getCenter(aux1).dst(current.getCenter(aux2));
-            if (distance < closestDistance && distance <= BASE_RADIUS) {
+            if (distance < closestDistance && distance <= NOTE_RADIUS) {
                 closest = current;
                 closestDistance = distance;
             }

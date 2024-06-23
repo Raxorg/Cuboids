@@ -21,7 +21,8 @@ public class GameRenderer extends Renderer3D<GameStuff> {
 
         useStaticCamera();
         spriteBatch.begin();
-        // 2D UI
+        drawArray(stuff.getLives());
+        stuff.getWaveText().draw(spriteBatch);
         spriteBatch.end();
     }
 }

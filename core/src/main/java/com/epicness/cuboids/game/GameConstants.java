@@ -26,6 +26,12 @@ public class GameConstants {
     public static final float BASE_Y = CAMERA_HALF_HEIGHT - BASE_RADIUS;
     public static final float BASE_THICKNESS = 10f;
 
+    public static final float NOTE_RADIUS = BASE_RADIUS * 1.2f;
+
+    public static final int INITIAL_LIVES = 5;
+    public static final float LIFE_SIZE = 30f;
+    public static final float LIFE_RADIUS = LIFE_SIZE / 2f;
+
     public static final float[] BOTTOM_RIGHT_VERTS = {0f, 50f, 50f, 50f, 0f, 0f};
     public static final float[] BOTTOM_LEFT_VERTS = {50f, 50f, 50f, 0f, 0f, 50f};
     public static final float[] TOP_RIGHT_VERTS = {0f, 0f, 0f, 50f, 50f, 0f};

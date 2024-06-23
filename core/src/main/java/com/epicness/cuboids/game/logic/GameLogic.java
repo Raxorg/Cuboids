@@ -5,11 +5,13 @@ import com.epicness.cuboids.game.logic.enemies.EnemySpawner;
 import com.epicness.cuboids.game.logic.enemies.WaveHandler;
 import com.epicness.cuboids.game.logic.other.CameraHandler;
 import com.epicness.cuboids.game.logic.other.Fader;
+import com.epicness.cuboids.game.logic.other.OverlayHandler;
 import com.epicness.cuboids.game.logic.other.Rotator;
 import com.epicness.cuboids.game.logic.other.SoundHandler;
 import com.epicness.cuboids.game.logic.other.StuffMover;
 import com.epicness.cuboids.game.logic.player.ComboHandler;
 import com.epicness.cuboids.game.logic.player.BoundsHandler;
+import com.epicness.cuboids.game.logic.player.LifeHandler;
 import com.epicness.cuboids.game.logic.player.NoteHandler;
 import com.epicness.cuboids.game.logic.player.PlayerEnabler;
 import com.epicness.cuboids.game.logic.player.PlayerMover;
@@ -24,6 +26,7 @@ public class GameLogic extends Logic {
     // Other
     private final CameraHandler cameraHandler;
     private final Fader fader;
+    private final OverlayHandler overlayHandler;
     private final Rotator rotator;
     // Player
     private final PlayerMover playerMover;
@@ -36,11 +39,13 @@ public class GameLogic extends Logic {
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(fader = new Fader());
+        registerHandler(overlayHandler = new OverlayHandler());
         registerHandler(rotator = new Rotator());
         registerHandler(new SoundHandler());
         registerHandler(new StuffMover());
         // Player
         registerHandler(new ComboHandler());
+        registerHandler(new LifeHandler());
         registerHandler(new NoteHandler());
         registerHandler(new BoundsHandler());
         registerHandler(new PlayerEnabler());
@@ -56,6 +61,7 @@ public class GameLogic extends Logic {
         // Other
         cameraHandler.update();
         fader.update();
+        overlayHandler.update();
         rotator.update();
         // Player
         playerMover.update();

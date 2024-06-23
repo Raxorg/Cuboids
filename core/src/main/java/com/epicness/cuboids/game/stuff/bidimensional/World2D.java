@@ -32,6 +32,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Drawable2D;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 public class World2D implements Drawable2D {
 
@@ -40,6 +41,7 @@ public class World2D implements Drawable2D {
     private final SnapshotArray<Enemy> enemies;
     private final Player player;
     private final Border[] lines;
+    private final Rectangle overlay;
 
     public World2D() {
 
@@ -52,6 +54,8 @@ public class World2D implements Drawable2D {
 
         lines = new Border[12];
         initLines();
+
+        overlay = new Rectangle(-CAMERA_WIDTH, -CAMERA_HEIGHT, CAMERA_WIDTH * 3f, CAMERA_HEIGHT * 3f);
     }
 
     private void initLines() {
@@ -101,6 +105,7 @@ public class World2D implements Drawable2D {
         for (int i = 0; i < lines.length; i++) {
             lines[i].draw(shapeDrawer);
         }
+        overlay.draw(shapeDrawer);
     }
 
     public SnapshotArray<EnemySpawn> getSpawns() {
@@ -121,5 +126,9 @@ public class World2D implements Drawable2D {
 
     public Border[] getLines() {
         return lines;
+    }
+
+    public Rectangle getOverlay() {
+        return overlay;
     }
 }
