@@ -23,10 +23,10 @@ public class CameraHandler extends GameLogicHandler {
 
     @Override
     protected void update(float delta) {
-        if (Gdx.input.isKeyPressed(C))
+        if (Gdx.input.isKeyPressed(V))
             camera.rotateAround(Vector3.Zero, Vector3.X, delta * 45f);
 
-        if (Gdx.input.isKeyPressed(V))
+        if (Gdx.input.isKeyPressed(C))
             camera.rotateAround(Vector3.Zero, Vector3.Y, delta * 45f);
 
         camera.update();
