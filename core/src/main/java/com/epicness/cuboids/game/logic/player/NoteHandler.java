@@ -2,7 +2,11 @@ package com.epicness.cuboids.game.logic.player;
 
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
+import static com.badlogic.gdx.Input.Keys.DOWN;
+import static com.badlogic.gdx.Input.Keys.LEFT;
+import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.Input.Keys.S;
+import static com.badlogic.gdx.Input.Keys.UP;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.cuboids.game.constants.GameConstants.NOTE_RADIUS;
 
@@ -61,23 +65,22 @@ public class NoteHandler extends GameLogicHandler {
     private boolean directionMatchesKey(Direction direction, int keycode) {
         switch (direction) {
             case UP:
-                return keycode == S;
+                return keycode == S || keycode == DOWN;
             case DOWN:
-                return keycode == W;
+                return keycode == W || keycode == UP;
             case LEFT:
-                return keycode == D;
+                return keycode == D || keycode == RIGHT;
             case RIGHT:
-                return keycode == A;
+                return keycode == A || keycode == LEFT;
             case UP_RIGHT:
-                return keycode == S || keycode == A;
+                return keycode == S || keycode == A || keycode == DOWN || keycode == LEFT;
             case UP_LEFT:
-                return keycode == S || keycode == D;
+                return keycode == S || keycode == D || keycode == DOWN || keycode == RIGHT;
             case DOWN_RIGHT:
-                return keycode == W || keycode == A;
+                return keycode == W || keycode == A || keycode == UP || keycode == LEFT;
             case DOWN_LEFT:
             default:
-                return keycode == W || keycode == D;
-
+                return keycode == W || keycode == D || keycode == UP || keycode == RIGHT;
         }
     }
 }
