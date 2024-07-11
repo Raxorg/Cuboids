@@ -17,7 +17,7 @@ public class OverlayHandler extends GameLogicHandler {
         overlay = stuff.getWorld2D().getOverlay();
         initialColor = new Color();
         transitionColor = new Color();
-        progress = 0f;
+        progress = 1f;
         hide();
     }
 
