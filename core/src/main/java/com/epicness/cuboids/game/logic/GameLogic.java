@@ -19,6 +19,7 @@ import com.epicness.cuboids.game.logic.player.NoteHandler;
 import com.epicness.cuboids.game.logic.player.PlayerEnabler;
 import com.epicness.cuboids.game.logic.player.PlayerMover;
 import com.epicness.cuboids.game.logic.player.PlayerTracker;
+import com.epicness.cuboids.game.logic.spawns.SpawnChooser;
 import com.epicness.fundamentals.logic.Logic;
 
 public class GameLogic extends Logic {
@@ -58,6 +59,8 @@ public class GameLogic extends Logic {
         registerHandler(new PlayerEnabler());
         registerHandler(playerMover = new PlayerMover());
         registerHandler(new PlayerTracker());
+        // Spawns
+        registerHandler(new SpawnChooser());
     }
 
     @Override

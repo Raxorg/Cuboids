@@ -27,6 +27,7 @@ public class PlayerMover extends GameLogicHandler {
         player.speed.scl(PLAYER_SPEED * delta);
         player.translate(player.speed);
 
+        get(SpawnChooser.class).checkProximity();
         get(BoundsHandler.class).checkBounds();
         get(PlayerTracker.class).trackPlayer();
         get(BaseHandler.class).checkProximity();
