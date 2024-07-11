@@ -1,6 +1,6 @@
 package com.epicness.cuboids.game.logic.player;
 
-import static com.epicness.cuboids.game.GameConstants.PLAYER_SIZE;
+import static com.epicness.cuboids.game.constants.GameConstants.PLAYER_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.epicness.cuboids.game.logic.GameLogicHandler;

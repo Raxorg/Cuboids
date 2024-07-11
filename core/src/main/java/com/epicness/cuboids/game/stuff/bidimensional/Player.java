@@ -1,6 +1,6 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
-import static com.epicness.cuboids.game.GameConstants.PLAYER_RADIUS;
+import static com.epicness.cuboids.game.constants.GameConstants.PLAYER_RADIUS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 

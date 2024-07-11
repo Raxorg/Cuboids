@@ -4,7 +4,7 @@ import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
-import static com.epicness.cuboids.game.GameConstants.NOTE_RADIUS;
+import static com.epicness.cuboids.game.constants.GameConstants.NOTE_RADIUS;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;

@@ -2,10 +2,10 @@ package com.epicness.cuboids.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.cuboids.game.GameConstants.BASE_RADIUS;
-import static com.epicness.cuboids.game.GameConstants.BASE_THICKNESS;
-import static com.epicness.cuboids.game.GameConstants.BASE_X;
-import static com.epicness.cuboids.game.GameConstants.BASE_Y;
+import static com.epicness.cuboids.game.constants.GameConstants.BASE_RADIUS;
+import static com.epicness.cuboids.game.constants.GameConstants.BASE_THICKNESS;
+import static com.epicness.cuboids.game.constants.GameConstants.BASE_X;
+import static com.epicness.cuboids.game.constants.GameConstants.BASE_Y;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;

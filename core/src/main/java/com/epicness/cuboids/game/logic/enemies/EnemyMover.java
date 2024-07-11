@@ -1,7 +1,7 @@
 package com.epicness.cuboids.game.logic.enemies;
 
 import static com.badlogic.gdx.graphics.Color.RED;
-import static com.epicness.cuboids.game.GameConstants.NOTE_RADIUS;
+import static com.epicness.cuboids.game.constants.GameConstants.NOTE_RADIUS;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;

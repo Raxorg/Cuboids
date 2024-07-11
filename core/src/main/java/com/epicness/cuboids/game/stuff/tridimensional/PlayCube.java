@@ -1,6 +1,6 @@
 package com.epicness.cuboids.game.stuff.tridimensional;
 
-import static com.epicness.cuboids.game.GameConstants.CUBE_SIZE;
+import static com.epicness.cuboids.game.constants.GameConstants.CUBE_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 

@@ -1,6 +1,7 @@
 package com.epicness.cuboids.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
+import static com.epicness.cuboids.game.constants.GameConstants.SPAWN_SIZE;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
@@ -14,13 +15,11 @@ public class EnemySpawn extends Fadeable implements Movable {
     private final Rectangle rectangle;
     public final float[] enemyVerts;
     public final Direction enemyDirection;
-    public final Direction[] combo;
 
-    public EnemySpawn(float x, float y, float size, Color color, float[] enemyVerts, Direction enemyDirection, Direction[] combo) {
-        rectangle = new Rectangle(x, y, size, size, 10f, color, CLEAR);
+    public EnemySpawn(float x, float y, Color color, float[] enemyVerts, Direction enemyDirection) {
+        rectangle = new Rectangle(x, y, SPAWN_SIZE, SPAWN_SIZE, 10f, color, CLEAR);
         this.enemyVerts = enemyVerts;
         this.enemyDirection = enemyDirection;
-        this.combo = combo;
         originalColor.set(color);
     }
 

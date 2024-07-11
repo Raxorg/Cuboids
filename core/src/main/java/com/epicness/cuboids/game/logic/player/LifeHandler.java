@@ -1,8 +1,8 @@
 package com.epicness.cuboids.game.logic.player;
 
-import static com.epicness.cuboids.game.GameConstants.INITIAL_LIVES;
-import static com.epicness.cuboids.game.GameConstants.LIFE_RADIUS;
-import static com.epicness.cuboids.game.GameConstants.LIFE_SIZE;
+import static com.epicness.cuboids.game.constants.GameConstants.INITIAL_LIVES;
+import static com.epicness.cuboids.game.constants.GameConstants.LIFE_RADIUS;
+import static com.epicness.cuboids.game.constants.GameConstants.LIFE_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 
 import com.badlogic.gdx.utils.SnapshotArray;

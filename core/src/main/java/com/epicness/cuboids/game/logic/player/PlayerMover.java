@@ -1,6 +1,6 @@
 package com.epicness.cuboids.game.logic.player;
 
-import static com.epicness.cuboids.game.GameConstants.PLAYER_SPEED;
+import static com.epicness.cuboids.game.constants.GameConstants.PLAYER_SPEED;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
