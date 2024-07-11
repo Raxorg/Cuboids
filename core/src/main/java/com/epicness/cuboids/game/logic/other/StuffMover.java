@@ -18,6 +18,7 @@ public class StuffMover extends GameLogicHandler {
         movables.addAll(stuff.getWorld2D().getSpawns());
         movables.addAll(stuff.getWorld2D().getEnemies());
         movables.addAll(stuff.getWorld2D().getLines());
+        movables.addAll(stuff.getWorld2D().getRectangles());
         movables.add(stuff.getWorld2D().getBase());
 
         enemies = stuff.getWorld2D().getEnemies();

@@ -24,6 +24,7 @@ public class Fader extends GameLogicHandler {
         fadeables.add(stuff.getWorld2D().getPlayer());
         fadeables.addAll(stuff.getWorld2D().getSpawns());
         fadeables.addAll(stuff.getWorld2D().getLines());
+        fadeables.addAll(stuff.getWorld2D().getRectangles());
         fadeables.add(stuff.getWorld2D().getBase());
 
         enemies = stuff.getWorld2D().getEnemies();
