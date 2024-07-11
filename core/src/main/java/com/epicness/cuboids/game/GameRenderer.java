@@ -23,6 +23,8 @@ public class GameRenderer extends Renderer3D<GameStuff> {
         spriteBatch.begin();
         drawArray(stuff.getLives());
         stuff.getWaveText().draw(spriteBatch);
+        stuff.getFreeMovementText().draw(spriteBatch);
+        stuff.getInstructionsText().draw(spriteBatch);
         spriteBatch.end();
     }
 }

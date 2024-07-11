@@ -8,6 +8,7 @@ import com.epicness.cuboids.game.logic.enemies.WaveTextHandler;
 import com.epicness.cuboids.game.logic.enemies.WaveTracker;
 import com.epicness.cuboids.game.logic.other.CameraHandler;
 import com.epicness.cuboids.game.logic.other.Fader;
+import com.epicness.cuboids.game.logic.other.InstructionsHandler;
 import com.epicness.cuboids.game.logic.other.OverlayHandler;
 import com.epicness.cuboids.game.logic.other.Rotator;
 import com.epicness.cuboids.game.logic.other.SoundHandler;
@@ -45,6 +46,7 @@ public class GameLogic extends Logic {
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(fader = new Fader());
+        registerHandler(new InstructionsHandler());
         registerHandler(overlayHandler = new OverlayHandler());
         registerHandler(rotator = new Rotator());
         registerHandler(new SoundHandler());
