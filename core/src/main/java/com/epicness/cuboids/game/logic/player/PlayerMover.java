@@ -5,6 +5,8 @@ import static com.epicness.cuboids.game.constants.GameConstants.PLAYER_SPEED;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
+import com.epicness.cuboids.game.logic.base.BaseHandler;
+import com.epicness.cuboids.game.logic.spawns.SpawnChooser;
 import com.epicness.cuboids.game.stuff.bidimensional.Player;
 
 public class PlayerMover extends GameLogicHandler {
@@ -27,7 +29,7 @@ public class PlayerMover extends GameLogicHandler {
 
         get(BoundsHandler.class).checkBounds();
         get(PlayerTracker.class).trackPlayer();
-        get(ComboHandler.class).checkProximity();
+        get(BaseHandler.class).checkProximity();
     }
 
     private void pollInput() {

@@ -1,6 +1,6 @@
 package com.epicness.cuboids.game.logic.enemies;
 
-import static com.badlogic.gdx.Input.Keys.O;
+import static com.badlogic.gdx.Input.Keys.F;
 import static com.epicness.cuboids.game.constants.Direction.DOWN;
 import static com.epicness.cuboids.game.constants.Direction.DOWN_LEFT;
 import static com.epicness.cuboids.game.constants.Direction.DOWN_RIGHT;
@@ -9,10 +9,11 @@ import static com.epicness.cuboids.game.constants.Direction.RIGHT;
 import static com.epicness.cuboids.game.constants.Direction.UP;
 import static com.epicness.cuboids.game.constants.Direction.UP_LEFT;
 import static com.epicness.cuboids.game.constants.Direction.UP_RIGHT;
-import static com.epicness.cuboids.game.stuff.other.Wave.WAVE_1;
+import static com.epicness.cuboids.game.stuff.other.Wave.WAVES;
 
 import com.epicness.cuboids.game.constants.Direction;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
+import com.epicness.cuboids.game.logic.other.InstructionsHandler;
 import com.epicness.cuboids.game.stuff.bidimensional.EnemySpawn;
 import com.epicness.cuboids.game.stuff.other.Wave;
 
@@ -23,9 +24,9 @@ public class WaveHandler extends GameLogicHandler {
 
     private Map<Direction, EnemySpawn> spawnMap;
     private Wave currentWave;
-    private int currentIndex;
+    private int currentWaveIndex, currentDirectionIndex;
     private float time;
-    private boolean spawning;
+    private boolean spawning, gameStarted;
 
     @Override
     protected void init() {
@@ -40,6 +41,7 @@ public class WaveHandler extends GameLogicHandler {
         spawnMap.put(DOWN_LEFT, stuff.getWorld2D().getSpawns().get(7));
 
         spawning = false;
+        gameStarted = false;
     }
 
     @Override
@@ -48,28 +50,46 @@ public class WaveHandler extends GameLogicHandler {
 
         time += delta;
         if (time >= currentWave.spawnRate) {
-            EnemySpawn spawn = spawnMap.get(currentWave.get(currentIndex));
+            EnemySpawn spawn = spawnMap.get(currentWave.get(currentDirectionIndex));
             if (spawn != null) {
                 get(EnemySpawner.class).spawnEnemy(spawn, currentWave.speed);
+            } else {
+                get(WaveTracker.class).enemyDisappears();
             }
             time -= currentWave.spawnRate;
-            currentIndex++;
-            if (currentIndex == currentWave.size) spawning = false;
+            currentDirectionIndex++;
+            if (currentDirectionIndex == currentWave.size) spawning = false;
         }
     }
 
-    public void beginWave(Wave wave) {
+    public void beginNextWave() {
         if (spawning) return;
 
+        currentWaveIndex++;
+        beginWave(WAVES[currentWaveIndex]);
+    }
+
+    private void beginWave(Wave wave) {
         currentWave = wave;
-        currentIndex = 0;
+        currentDirectionIndex = 0;
         spawning = true;
+        get(WaveTracker.class).trackWave(wave, currentWaveIndex);
+        get(WaveTextHandler.class).setWave(currentWaveIndex + 1);
+    }
+
+    public void retryWave() {
+        beginWave(currentWave);
     }
 
     @Override
     public void keyDown(int keycode) {
-        if (keycode == O) {
-            beginWave(WAVE_1);
+        if (gameStarted) return;
+
+        if (keycode == F) {
+            currentWaveIndex = -1;
+            beginNextWave();
+            gameStarted = true;
+            get(InstructionsHandler.class).hideInstructions();
         }
     }
 }

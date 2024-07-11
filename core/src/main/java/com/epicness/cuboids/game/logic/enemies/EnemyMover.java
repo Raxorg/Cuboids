@@ -48,6 +48,7 @@ public class EnemyMover extends GameLogicHandler {
         if (distanceToCenter < enemy.distanceToCenter && enemy.distanceToCenter > NOTE_RADIUS) {
             enemies.removeValue(enemy, true);
             get(LifeHandler.class).loseLife();
+            get(WaveTracker.class).enemyDisappears();
             get(OverlayHandler.class).appear(RED);
         }
     }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.cuboids.game.constants.Direction;
 import com.epicness.cuboids.game.logic.GameLogicHandler;
+import com.epicness.cuboids.game.logic.enemies.WaveTracker;
 import com.epicness.cuboids.game.logic.other.SoundHandler;
 import com.epicness.cuboids.game.stuff.bidimensional.Base;
 import com.epicness.cuboids.game.stuff.bidimensional.Enemy;
@@ -39,6 +40,7 @@ public class NoteHandler extends GameLogicHandler {
             enemies.begin();
             enemies.removeValue(closestEnemy, true);
             enemies.end();
+            get(WaveTracker.class).enemyDisappears();
         }
     }
 
