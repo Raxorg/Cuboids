@@ -224,8 +224,4 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         colorAttribute.color.set(color);
         modelInstance.getMaterial(MATERIAL_ID).set(colorAttribute);
     }
-
-    public ModelInstance getModelInstance() {
-        return modelInstance;
-    }
 }

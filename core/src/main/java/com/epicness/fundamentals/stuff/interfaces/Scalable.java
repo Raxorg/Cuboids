@@ -25,8 +25,12 @@ public interface Scalable {
         stretchHeight(height - getHeight());
     }
 
+    default Vector2 getSize(Vector2 result) {
+        return result.set(getWidth(), getHeight());
+    }
+
     default Vector2 getSize() {
-        return new Vector2(getWidth(), getHeight());
+        return getSize(new Vector2());
     }
 
     default void setSize(float width, float height) {

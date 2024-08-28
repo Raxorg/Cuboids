@@ -17,7 +17,7 @@ public class EnemySpawn extends Fadeable implements Movable {
     public final Direction enemyDirection;
 
     public EnemySpawn(float x, float y, Color color, float[] enemyVerts, Direction enemyDirection) {
-        rectangle = new Rectangle(x, y, SPAWN_SIZE, SPAWN_SIZE, 10f, color, CLEAR);
+        rectangle = new Rectangle(x, y, SPAWN_SIZE, SPAWN_SIZE, color, CLEAR, 10f);
         this.enemyVerts = enemyVerts;
         this.enemyDirection = enemyDirection;
         originalColor.set(color);

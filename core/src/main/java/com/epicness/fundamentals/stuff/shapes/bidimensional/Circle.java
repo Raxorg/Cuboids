@@ -20,17 +20,17 @@ public class Circle implements Transformable, Buttonable, ShapeDrawable {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.borderColor = new Color(borderColor);
-        this.fillColor = new Color(fillColor);
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
         this.thickness = thickness;
-    }
-
-    public Circle(float x, float y, float radius, Color color, float thickness) {
-        this(x, y, radius, color, color, thickness);
     }
 
     public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
         this(x, y, radius, borderColor, fillColor, 3f);
+    }
+
+    public Circle(float x, float y, float radius, Color color, float thickness) {
+        this(x, y, radius, color, color, thickness);
     }
 
     public Circle(float radius, Color borderColor, Color fillColor) {

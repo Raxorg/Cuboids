@@ -9,26 +9,26 @@ import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 public class Triangle implements ShapeDrawable, Movable {
 
     private float x1, y1, x2, y2, x3, y3;
-    private float thickness;
     private final Color color;
+    private float thickness;
 
-    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3, float thickness, Color color) {
+    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3, Color color, float thickness) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.x3 = x3;
         this.y3 = y3;
+        this.color = color;
         this.thickness = thickness;
-        this.color = new Color(color);
     }
 
     public Triangle(float x1, float y1, float x2, float y2, float x3, float y3) {
-        this(x1, y1, x2, y2, x3, y3, 3f, new Color(1f, 1f, 1f, 1f));
+        this(x1, y1, x2, y2, x3, y3, new Color(1f, 1f, 1f, 1f), 3f);
     }
 
     public Triangle(float[] vertices, Color color) {
-        this(vertices[0], vertices[1], vertices[2], vertices[3], vertices[4], vertices[5], 3f, color);
+        this(vertices[0], vertices[1], vertices[2], vertices[3], vertices[4], vertices[5], color, 3f);
     }
 
     @Override
